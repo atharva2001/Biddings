@@ -4,5 +4,5 @@ from Biddings import views
 from django.contrib import admin
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('https://biddings1.herokuapp.com', views.index, name='index'),
 ]
