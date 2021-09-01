@@ -22,10 +22,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('biddings.urls')),
-    path('about', include('Bidwars.urls')),
-    path('login', include('Bidwars.urls')),
-    path('search', include('Bidwars.urls')),
-    path('register', include('Bidwars.urls')),
+    path('/about', include('Bidwars.urls')),
+    path('/login', include('Bidwars.urls')),
+    # path('search', include('Bidwars.urls')),
+    path('/register', include('Bidwars.urls')),
     # path('admin/', admin.site.urls),
     path('', include('Bidwars.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
