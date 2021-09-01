@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from datetime import datetime, time, timedelta, date
 from Bidwars.models import Register
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -27,6 +28,7 @@ def register(request):
             registers = Register(name=request.session['name'], email=request.session['email'],
                                         password=request.session['password'],plan=request.session['plan'], date=date)
             registers.save()
+            messages.error(request, "Invalid Credentials!")
     except Exception as e:
         print(e)
         
