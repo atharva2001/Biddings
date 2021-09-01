@@ -26,8 +26,7 @@ def register(request):
 
             registers = Register(name=request.session['name'], email=request.session['email'],
                                         password=request.session['password'],plan=request.session['plan'], date=date)
-
-        registers.save()
+            registers.save()
     except Exception as e:
         print(e)
         
