@@ -30,5 +30,5 @@ def register(request):
         registers.save()
     except Exception as e:
         print(e)
-        return redirect('/error')
+        
     return render(request, 'register.html')
