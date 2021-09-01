@@ -28,7 +28,8 @@ def register(request):
             registers = Register(name=request.session['name'], email=request.session['email'],
                                         password=request.session['password'],plan=request.session['plan'], date=date)
             registers.save()
-            messages.error(request, "Invalid Credentials!")
+            messages.error(request, "Registered!")
+            return redirect('/login')
     except Exception as e:
         print(e)
         
