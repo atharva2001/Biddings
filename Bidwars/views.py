@@ -18,7 +18,7 @@ def profile(request):
             pro = Profile.objects.filter(name=name, email=email).exists()
             print(pro, item)
             if pro == True:
-                # pro = Profile.objects.get(name=name, email=email)
+                pro = Profile.objects.get(name=name, email=email)
                 reg = Register.objects.get(name=name,email=email,password=password)
                 if reg.date >= date.today():
                     return render(request, 'profile.html',{'reg':reg, 'item':item, 'pro':pro})
