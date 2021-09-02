@@ -246,7 +246,7 @@ def emails(request):
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                             
-                                                <td align="center" style="border-radius: 3px;" bgcolor="#FFA73B"><a href="http://127.0.0.1:8000/confirm" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Confirm Email</a></td>
+                                                <td align="center" style="border-radius: 3px;" bgcolor="#FFA73B"><a href="http://biddings1.herokuapp.com/confirm" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Confirm Email</a></td>
                                             </tr>
                                         </table>
                                     </td>
