@@ -8,7 +8,20 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 def login(request):
+    try:
+        if request.method == "POST":
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            password = request.POST.get("password")
+
+            reg = Register.objects.get(name=name,email=email,password=password)
+            return render(request, 'profile.html',{'reg':reg})
+    except Exception as e:
+        print(e)
+        messages.error(request, "Invalid Credentials!")
+        return redirect('/login')
     return render(request, 'login.html')
+    
 def register(request):
     try:
         if request.method == "POST":
