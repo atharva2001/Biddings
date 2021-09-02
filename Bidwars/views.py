@@ -1,13 +1,49 @@
 from django.shortcuts import redirect, render
 from datetime import datetime, time, timedelta, date
-from Bidwars.models import Register
+from Bidwars.models import Register, Profile, Item, Store
 from django.contrib import messages
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 def about(request):
     return render(request, 'about.html')
 def profile(request):
+    try:
+       if request.method == "POST":
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            password = request.POST.get("password")
+            item = Item.objects.filter(name=name,email=email)
+            pro = Profile.objects.filter(name=name, email=email).exists()
+            print(pro, item)
+            if pro == True:
+                # pro = Profile.objects.get(name=name, email=email)
+                reg = Register.objects.get(name=name,email=email,password=password)
+                if reg.date >= date.today():
+                    return render(request, 'profile.html',{'reg':reg, 'item':item, 'pro':pro})
+                else:
+                    messages.error(request, "Your free trial expired!")
+                    return redirect('/register')
+            else:
+                pro = {
+                    'address' : 'NA',
+                    'phone' : 'NA',
+                    'country' : 'NA',
+                }
+                reg = Register.objects.get(name=name,email=email,password=password)
+                print(reg)
+                if reg.date >= date.today():
+                    return render(request, 'profile.html',{'reg':reg, 'item':item, 'pro':pro})
+                else:
+                    messages.error(request, "Your free trial expired!")
+                    return redirect('/register')
+                
+    except Exception as e:
+        print(e)
+        messages.error(request, "Invalid Credentials")
+        return redirect('/login')
+        
     return render(request, 'profile.html')
 
 def login(request):
