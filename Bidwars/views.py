@@ -31,6 +31,7 @@ def register(request):
             messages.error(request, "Registered!")
             return redirect('/login')
     except Exception as e:
-        print(e)
+        messages.error(request, "Something went wrong!")
+        return redirect('/login')
         
     return render(request, 'register.html')
