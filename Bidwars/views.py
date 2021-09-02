@@ -25,11 +25,16 @@ def register(request):
             else:
                 date = datetime.today() + timedelta(days=365)
 
-            registers = Register(name=request.session['name'], email=request.session['email'],
-                                        password=request.session['password'],plan=request.session['plan'], date=date)
-            registers.save()
-            messages.error(request, "Registered!")
-            return redirect('/login')
+            reg = Register.objects.filter(email=request.session['email']).exists()
+            if reg != True:
+                registers = Register(name=request.session['name'], email=request.session['email'],
+                                            password=request.session['password'],plan=request.session['plan'], date=date)
+                registers.save()
+                messages.error(request, "Registered!")
+                return redirect('/login')
+            else:
+                messages.error(request, "Email Exists!")
+                return redirect('/register') 
     except Exception as e:
         messages.error(request, "Something went wrong!")
         return redirect('/login')
