@@ -7,6 +7,9 @@ def index(request):
     return render(request, 'index.html')
 def about(request):
     return render(request, 'about.html')
+def profile(request):
+    return render(request, 'profile.html')
+
 def login(request):
     try:
         if request.method == "POST":
@@ -21,7 +24,7 @@ def login(request):
         messages.error(request, "Invalid Credentials!")
         return redirect('/login')
     return render(request, 'login.html')
-    
+
 def register(request):
     try:
         if request.method == "POST":
