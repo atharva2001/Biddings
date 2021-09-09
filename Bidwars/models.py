@@ -38,7 +38,7 @@ class Item(models.Model):
     age = models.CharField(max_length=100)
     bio = models.TextField()
     image = models.ImageField( 
-                        upload_to='/staticfiles/media/',
+                        upload_to='media/',
                         null=True,
                         blank=False,
                         )
