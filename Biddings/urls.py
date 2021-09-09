@@ -26,4 +26,4 @@ urlpatterns = [
     # path('search', include('Bidwars.urls')),
     path('/register', include('Bidwars.urls')),
     path('', include('Bidwars.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
