@@ -470,7 +470,7 @@ def add(request):
     except Exception as ee:
         print(ee)
         messages.error(request,'Urghh!')
-
+        pro = Profile.objects.all().get(name = name, email = email)
         return render(request, 'profile.html',{'reg':reg,'item':item, 'pro':pro})
     return render(request, 'add.html',{'reg':reg})
 
