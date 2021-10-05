@@ -429,14 +429,14 @@ def editpro(request):
                 messages.success(request, "Successfully edited your profile ")
                 item = Item.objects.filter(name=name,email=email)
                 reg = Register.objects.get(name=name,email=email)
-                pro = Profile.objects.all().get(name = name, email = email)
+                pro = Profile.objects.get(name = name, email = email)
                 return render(request, 'profile.html',{'reg':reg,'item':item, 'pro':pro})
         else:
 
                 messages.error(request, "Cant edit!")
                 item = Item.objects.filter(name=name,email=email)
                 reg = Register.objects.get(name=name,email=email)
-                pro = Profile.objects.all().get(name = name, email = email)
+                pro = Profile.objects.get(name = name, email = email)
                 return render(request, 'profile.html',{'reg':reg,'item':item, 'pro':pro})
                 
     except Exception:
@@ -465,7 +465,7 @@ def add(request):
                           income=income,except_amount=except_amount,age=age,bio=bio,image=image)
             adds.save()      
             pro = Profile.objects.all().get(name = name, email = email)         
-            #print(name,total_item,email,gender,hobby,income,except_amount,age,bio,image)
+            print(name,total_item,email,gender,hobby,income,except_amount,age,bio,image)
             return render(request, 'profile.html',{'reg':reg,'item':item, 'pro':pro})
     except Exception as ee:
         print(ee)
