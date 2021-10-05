@@ -463,7 +463,8 @@ def add(request):
             item = Item.objects.filter(name=name,email=email)
             adds = Item(name=name, email=email,total_item=total_item,gender=gender,hobby=hobby,
                           income=income,except_amount=except_amount,age=age,bio=bio,image=image)
-            adds.save()      
+            adds.save()  
+            pro = None    
             pro = Profile.objects.all().get(name = name, email = email)         
             print(name,total_item,email,gender,hobby,income,except_amount,age,bio,image)
             return render(request, 'profile.html',{'reg':reg,'item':item, 'pro':pro})
