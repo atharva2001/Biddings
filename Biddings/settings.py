@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+    
+# AwS mf
+
+AWS_ACCESS_KEY_ID = 'AKIAYOKHOT5XSV55WSWN'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'bidwars-bucks'
+
+AWS_S3_FILE_OWERWITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
