@@ -144,3 +144,4 @@ AWS_STORAGE_BUCKET_NAME = 'bidwars-bucks'
 AWS_S3_FILE_OWERWITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
