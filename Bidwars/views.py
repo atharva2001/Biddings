@@ -318,23 +318,23 @@ def emails(request):
 
     return render(request, 'emails.html')
 def confirm(request):   
-    reg = Register.objects.filter(email=request.session['email']).exists()
-    if reg != True:
-        if request.session['plan'] == "Basic":
-            date = datetime.today() + timedelta(days=25)
-        elif request.session['plan'] == "Pro":
-            date = datetime.today() + timedelta(days=45)
-        else:
-            date = datetime.today() + timedelta(days=365)
-
-        registers = Register(name=request.session['name'], email=request.session['email'],
-                                        password=request.session['password'],plan=request.session['plan'], date=date)
-
-        registers.save()
-        
-        messages.success(request, "Registered Successfully!")
+    # reg = Register.objects.filter(email=request.session['email']).exists()
+    # if reg != True:
+    if request.session['plan'] == "Basic":
+        date = datetime.today() + timedelta(days=25)
+    elif request.session['plan'] == "Pro":
+        date = datetime.today() + timedelta(days=45)
     else:
-        messages.success(request, "Email exists!")
+        date = datetime.today() + timedelta(days=365)
+
+    registers = Register(name=request.session['name'], email=request.session['email'],
+                                    password=request.session['password'],plan=request.session['plan'], date=date)
+
+    registers.save()
+    
+    messages.success(request, "Registered Successfully!")
+    # else:
+    #     messages.success(request, "Email exists!")
     return render(request, 'login.html')
 def register(request):
     try:
