@@ -320,21 +320,22 @@ def emails(request):
 def confirm(request):   
     # reg = Register.objects.filter(email=request.session['email']).exists()
     # if reg != True:
-    if request.session['plan'] == "Basic":
-        date = datetime.today() + timedelta(days=25)
-    elif request.session['plan'] == "Pro":
-        date = datetime.today() + timedelta(days=45)
-    else:
-        date = datetime.today() + timedelta(days=365)
+    #     if request.session['plan'] == "Basic":
+    #         date = datetime.today() + timedelta(days=25)
+    #     elif request.session['plan'] == "Pro":
+    #         date = datetime.today() + timedelta(days=45)
+    #     else:
+    #         date = datetime.today() + timedelta(days=365)
 
-    registers = Register(name=request.session['name'], email=request.session['email'],
-                                    password=request.session['password'],plan=request.session['plan'], date=date)
+    #     registers = Register(name=request.session['name'], email=request.session['email'],
+    #                                     password=request.session['password'],plan=request.session['plan'], date=date)
 
-    registers.save()
-    
-    messages.success(request, "Registered Successfully!")
+    #     registers.save()
+        
+    #     messages.success(request, "Registered Successfully!")
     # else:
     #     messages.success(request, "Email exists!")
+    print(request.session['email'])
     return render(request, 'login.html')
 def register(request):
     try:
