@@ -98,7 +98,7 @@ def emails(request):
     if reg !=True:
         msg = EmailMessage()
         msg['Subject'] = 'Verification!!'
-        msg['From'] = "atharvashirke77@gmail.com"
+        msg['From'] = "atharvashirkre77@gmail.com"
         msg['To'] = request.session['email']
         msg.set_content('''
 
@@ -309,7 +309,7 @@ def emails(request):
 
 
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login("atharvashirke77@gmail.com", "@Atharvashirke.23")
+            smtp.login("atharvashirkre77@gmail.com", "@hcceimvbxjxxdjwx")
             smtp.send_message(msg)
     else:
         
