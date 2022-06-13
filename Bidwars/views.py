@@ -335,7 +335,7 @@ def confirm(request):
     #     messages.success(request, "Registered Successfully!")
     # else:
     #     messages.success(request, "Email exists!")
-    print(request.session['email'])
+    messages.success(request, "Registered Successfully!")
     return render(request, 'login.html')
 def register(request):
     try:
