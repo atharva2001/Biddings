@@ -96,6 +96,7 @@ def login(request):
 def emails(request):
     reg = Register.objects.filter(email=request.session['email']).exists()
     if reg !=True:
+        
         msg = EmailMessage()
         msg['Subject'] = 'Verification!!'
         msg['From'] = "atharvashirkre77@gmail.com"
@@ -335,7 +336,7 @@ def confirm(request):
     #     messages.success(request, "Registered Successfully!")
     # else:
     #     messages.success(request, "Email exists!")
-    messages.success(request, "Registered Successfully!")
+    messages.success(request, f"Registered Successfully! {request.session['email']}")
     return render(request, 'login.html')
 def register(request):
     try:
@@ -347,14 +348,9 @@ def register(request):
             request.session['plan'] = request.GET.get('plan')
 
             reg = Register.objects.filter(email=request.session['email']).exists()
-            
-            
-            
-            
             if reg != True:
                 return redirect('/emails')
             else:
-
                 messages.error(request, "Email already exists!")
                 return redirect('/register')
     except Exception as e:
